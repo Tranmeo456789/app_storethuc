@@ -1,3 +1,4 @@
+import 'package:app_storethuc/module/checkout/checkout_page.dart';
 import 'package:app_storethuc/module/home/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
         '/login': (context) => const SignInPage(),
         '/register': (context) => const SignUpPage(),
+        '/checkout': (context) => const CheckoutPage(),
       },
     );
   }

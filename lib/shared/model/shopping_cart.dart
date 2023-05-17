@@ -1,11 +1,11 @@
 class ShoppingCart {
-  int? userId;
+  String? userId;
   int? totalCart;
 
   ShoppingCart({this.userId, this.totalCart});
 
   factory ShoppingCart.fromJson(Map<String, dynamic> json) => ShoppingCart(
-        userId: int.tryParse(json['user_id'].toString()) ?? 0,
+        userId: json['user_id'].toString(),
         totalCart: int.tryParse(json['total_cart'].toString()) ?? 0,
       );
 }

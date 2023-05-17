@@ -84,7 +84,6 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
       _userRepo.signIn(e.email, e.pass).then(
         (userData) {
           processEventSink.add(SignInSuccessEvent(userData));
-          print('đang in data');
         },
         onError: (e) {
           // ignore: avoid_print

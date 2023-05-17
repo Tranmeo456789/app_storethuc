@@ -16,7 +16,7 @@ class ProductRepo {
     try {
       var response = await _productService.getProductList();
       var productList = Product.parseProductList(response.data);
-      print(productList.toString());
+      //print(productList.toString());
       c.complete(productList);
     } on DioError {
       c.completeError(RestError.fromData('Không có dữ liệu'));

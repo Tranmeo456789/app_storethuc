@@ -21,8 +21,9 @@ class UserRepo {
       if (userData != null) {
         SPref.instance.set(SPrefCache.KEY_TOKEN, userData.token.toString());
         c.complete(userData);
+        // ignore: unused_local_variable
         var token = await SPref.instance.get(SPrefCache.KEY_TOKEN);
-        print(token);
+        //print(token);
       }
     } on DioError catch (e) {
       // ignore: avoid_print

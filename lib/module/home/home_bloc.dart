@@ -12,7 +12,7 @@ class HomeBloc extends BaseBloc with ChangeNotifier {
   final ProductRepo _productRepo;
   final OrderRepo _orderRepo;
 
-  var _shoppingCart = ShoppingCart(userId: 1, totalCart: 1);
+  var _shoppingCart = ShoppingCart();
 
   static HomeBloc? _instance;
 

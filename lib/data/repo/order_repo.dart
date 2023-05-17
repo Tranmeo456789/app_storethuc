@@ -11,7 +11,7 @@ class OrderRepo {
   final OrderService _orderService;
   final String _userId;
 
-  OrderRepo({required OrderService orderService, required String userId})
+  OrderRepo({required OrderService orderService, required userId})
       : _orderService = orderService,
         _userId = userId;
 
@@ -33,7 +33,6 @@ class OrderRepo {
     var c = Completer<ShoppingCart>();
     try {
       var response = await _orderService.countShoppingCart();
-      print(response);
       var shoppingCart = ShoppingCart.fromJson(response.data['data']);
       c.complete(shoppingCart);
     } on DioError {

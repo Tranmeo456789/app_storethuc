@@ -5,15 +5,14 @@ import 'package:app_storethuc/shared/model/product.dart';
 class OrderService {
   Future<Response> countShoppingCart() {
     return BookClient.instance.dio.get(
-      '/order/count',
+      '/cart/count',
     );
   }
 
   Future<Response> addToCart(Product product) {
-    return BookClient.instance.dio.post(
-      '/order/add',
-      data: product.toJson(),
-    );
+    return BookClient.instance.dio.post('/cart/add', data: {
+      'product': product.toJson(),
+    });
   }
 
   Future<Response> orderDetail(String orderId) {
