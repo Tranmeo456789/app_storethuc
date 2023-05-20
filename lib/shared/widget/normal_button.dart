@@ -7,7 +7,7 @@ import '../app_color.dart';
 class NormalButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String? title;
-  final bool? enable;
+  final bool enable;
   const NormalButton(
       {super.key, this.onPressed, required this.title, required this.enable});
 
@@ -16,7 +16,7 @@ class NormalButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          enable! ? Colors.blue : const Color.fromARGB(255, 137, 191, 235),
+          enable ? Colors.blue : const Color.fromARGB(255, 137, 191, 235),
         ),
       ),
       onPressed: onPressed,

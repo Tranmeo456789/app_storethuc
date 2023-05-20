@@ -17,9 +17,9 @@ class OrderService {
 
   Future<Response> orderDetail(String userId) {
     return BookClient.instance.dio.get(
-      '/product',
+      '/cart/detail',
       queryParameters: {
-        'order_id': userId,
+        'user_id': userId,
       },
     );
   }

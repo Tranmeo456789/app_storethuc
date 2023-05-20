@@ -1,10 +1,10 @@
 import 'package:app_storethuc/shared/model/product.dart';
 
 class Order {
-  double? total;
-  List<Product>? items;
+  double total;
+  List<Product> items;
 
-  Order({this.total, this.items});
+  Order({required this.total, required this.items});
 
   factory Order.fromJson(Map<String, dynamic> json) => Order(
         total: double.parse(json["total"].toString()),

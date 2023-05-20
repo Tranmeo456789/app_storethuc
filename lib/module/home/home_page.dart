@@ -104,7 +104,7 @@ class _CartWidgetState extends State<CartWidget> {
                     return;
                   }
                   Navigator.pushNamed(context, '/checkout',
-                      arguments: cart.userId);
+                      arguments: cart.userId.toString());
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 15, right: 20),

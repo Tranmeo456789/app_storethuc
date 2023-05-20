@@ -1,3 +1,4 @@
+import 'package:app_storethuc/base/base_widget1.dart';
 import 'package:flutter/material.dart';
 import 'package:app_storethuc/base/base_event.dart';
 import 'package:app_storethuc/base/base_widget.dart';
@@ -23,11 +24,11 @@ class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Object? userId = ModalRoute.of(context)?.settings.arguments;
-    return PageContainer(
+    return PageContainer1(
       title: 'Checkout',
       di: [
         Provider.value(
-          value: userId,
+          value: userId.toString(),
         ),
         Provider.value(
           value: OrderService(),
@@ -66,10 +67,10 @@ class _ShoppingCartContainerState extends State<ShoppingCartContainer> {
       create: (_) => CheckoutBloc(
         orderRepo: Provider.of(context),
       ),
-      child: Consumer<CheckoutBloc>(
+      child: Consumer<CheckoutBloc?>(
         builder: (context, bloc, child) => BlocListener<CheckoutBloc>(
           listener: handleEvent,
-          child: ShoppingCart(bloc),
+          child: ShoppingCart(bloc!),
         ),
       ),
     );
@@ -77,7 +78,7 @@ class _ShoppingCartContainerState extends State<ShoppingCartContainer> {
 }
 
 class ShoppingCart extends StatefulWidget {
-  final CheckoutBloc bloc;
+  final CheckoutBloc? bloc;
   const ShoppingCart(this.bloc, {super.key});
 
   @override
@@ -89,13 +90,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
   @override
   void initState() {
     super.initState();
-    widget.bloc.getOrderDetail();
+    widget.bloc?.getOrderDetail();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamProvider<Object?>.value(
-      value: widget.bloc.orderStream,
+      value: widget.bloc?.orderStream,
       initialData: null,
       catchError: (context, err) {
         return err;
@@ -115,10 +116,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
           if (data is Order) {
             return Column(
               children: <Widget>[
-                Expanded(
-                  child: ProductListWidget(data.items),
-                ),
-                ConfirmInfoWidget(data.total as double),
+                ProductListWidget(data.items),
+                ConfirmInfoWidget(data.total),
               ],
             );
           }
@@ -135,7 +134,7 @@ class ConfirmInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CheckoutBloc>(builder: (context, bloc, child) {
+    return Consumer<CheckoutBloc?>(builder: (context, bloc, child) {
       return SizedBox(
         height: 170,
         width: double.infinity,
@@ -158,9 +157,9 @@ class ConfirmInfoWidget extends StatelessWidget {
             NormalButton(
               title: 'Confirm',
               onPressed: () {
-                bloc.event.add(ConfirmOrderEvent());
+                bloc?.event.add(ConfirmOrderEvent());
               },
-              enable: null,
+              enable: false,
             ),
           ],
         ),
@@ -179,6 +178,7 @@ class ProductListWidget extends StatelessWidget {
     var bloc = Provider.of<CheckoutBloc>(context);
     productList?.sort((p1, p2) => p1.price.compareTo(p2.price));
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: productList?.length,
       itemBuilder: (context, index) => _buildRow(productList![index], bloc),
     );
@@ -193,7 +193,7 @@ class ProductListWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                product.thumbnail,
+                "https://storethuc.xyz/public/${product.thumbnail}",
                 width: 90,
                 height: 140,
                 fit: BoxFit.fill,
@@ -205,6 +205,7 @@ class ProductListWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Text(
                     product.name,
@@ -246,18 +247,20 @@ class ProductListWidget extends StatelessWidget {
         BtnCartAction(
           title: '-',
           onPressed: () {
-            // if (product.quantity == 1) {
-            //   return;
-            // }
-            // product.quantity = product.quantity - 1;
-            bloc.event.add(UpdateCartEvent(product));
+            if (product.quantity != null) {
+              if (product.quantity == 1) {
+                return;
+              }
+              product.quantity = (product.quantity! - 1);
+              bloc.event.add(UpdateCartEvent(product));
+            }
           },
         ),
         const SizedBox(
           width: 15,
         ),
-        const Text('1',
-            style: TextStyle(
+        Text('${product.quantity}',
+            style: const TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.red)),
