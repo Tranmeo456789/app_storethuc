@@ -1,5 +1,6 @@
 import 'package:app_storethuc/module/checkout/checkout_page.dart';
 import 'package:app_storethuc/module/home/home_page.dart';
+import 'package:app_storethuc/module/splash/splash.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_storethuc/module/signin/signin_page.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primaryColor: Colors.amber),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (context) => const SignInPage(),
+        '/': (context) => const SplashPage(),
         '/home': (context) => const HomePage(),
         '/login': (context) => const SignInPage(),
         '/register': (context) => const SignUpPage(),
