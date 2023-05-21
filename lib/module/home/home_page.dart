@@ -211,10 +211,10 @@ class ProductListWidget extends StatelessWidget {
                 child: Container(
                   height: 90,
                   width: 90,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                          "https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+                          "https://storethuc.xyz/public/${product.thumbnail}"),
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -26,20 +26,20 @@ class OrderService {
 
   Future<Response> updateOrder(Product product) {
     return BookClient.instance.dio.post(
-      '/order/update',
+      '/cart/update',
       data: {
-        //'orderId': product.orderId,
-        // 'quantity': product.quantity,
+        //'userId': product.userId,
+        'quantity': product.quantity,
         'productId': product.id,
       },
     );
   }
 
-  Future<Response> confirm(String orderId) {
+  Future<Response> confirm(String userId) {
     return BookClient.instance.dio.post(
       '/order/confirm',
       data: {
-        'orderId': orderId,
+        'userId': userId,
         'status': 'CONFIRM',
       },
     );

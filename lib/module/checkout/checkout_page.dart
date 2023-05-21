@@ -1,7 +1,6 @@
 import 'package:app_storethuc/base/base_widget1.dart';
 import 'package:flutter/material.dart';
 import 'package:app_storethuc/base/base_event.dart';
-import 'package:app_storethuc/base/base_widget.dart';
 import 'package:app_storethuc/data/remote/order_service.dart';
 import 'package:app_storethuc/data/repo/order_repo.dart';
 import 'package:app_storethuc/event/confirm_order_event.dart';
@@ -159,7 +158,7 @@ class ConfirmInfoWidget extends StatelessWidget {
               onPressed: () {
                 bloc?.event.add(ConfirmOrderEvent());
               },
-              enable: false,
+              enable: true,
             ),
           ],
         ),
@@ -270,7 +269,7 @@ class ProductListWidget extends StatelessWidget {
         BtnCartAction(
           title: '+',
           onPressed: () {
-            // product.quantity = product.quantity + 1;
+            product.quantity = product.quantity! + 1;
             bloc.event.add(UpdateCartEvent(product));
           },
         ),

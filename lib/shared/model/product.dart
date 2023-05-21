@@ -4,12 +4,13 @@ class Product {
   double price;
   String thumbnail;
   int? quantity;
-  Product(
-      {required this.id,
-      required this.name,
-      required this.price,
-      required this.thumbnail,
-      this.quantity});
+  Product({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.thumbnail,
+    this.quantity,
+  });
 
   static List<Product> parseProductList(map) {
     var list = map['data'] as List<dynamic>;
