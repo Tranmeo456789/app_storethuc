@@ -1,4 +1,5 @@
 import 'package:app_storethuc/base/base_widget1.dart';
+import 'package:app_storethuc/shared/widget/txt_fomat_money.dart';
 import 'package:flutter/material.dart';
 import 'package:app_storethuc/base/base_event.dart';
 import 'package:app_storethuc/data/remote/order_service.dart';
@@ -14,7 +15,6 @@ import 'package:app_storethuc/shared/model/rest_error.dart';
 import 'package:app_storethuc/shared/widget/bloc_listener.dart';
 import 'package:app_storethuc/shared/widget/btn_cart_action.dart';
 import 'package:app_storethuc/shared/widget/normal_button.dart';
-//import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatelessWidget {
@@ -219,14 +219,7 @@ class ProductListWidget extends StatelessWidget {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  Text(
-                    'Giá: ${product.price}',
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
-                  ),
+                  TxtFomatMoney(value: product.price),
                   const SizedBox(
                     height: 15.0,
                   ),

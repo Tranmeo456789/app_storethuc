@@ -1,3 +1,4 @@
+import 'package:app_storethuc/shared/widget/txt_fomat_money.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:app_storethuc/base/base_widget1.dart';
@@ -249,13 +250,7 @@ class ProductListWidget extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             margin: const EdgeInsets.only(top: 5, left: 15),
-                            child: Text(
-                              '${product.price} vnd',
-                              style: const TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: TxtFomatMoney(value: product.price),
                           ),
                           Container(
                             margin: const EdgeInsets.only(right: 15),
