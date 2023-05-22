@@ -37,7 +37,7 @@ class OrderService {
 
   Future<Response> confirm(String userId) {
     return BookClient.instance.dio.post(
-      '/order/confirm',
+      '/cart/confirm',
       data: {
         'userId': userId,
         'status': 'CONFIRM',

@@ -1,4 +1,5 @@
 import 'package:app_storethuc/base/base_widget1.dart';
+import 'package:app_storethuc/module/home/home_page.dart';
 import 'package:app_storethuc/shared/widget/txt_fomat_money.dart';
 import 'package:flutter/material.dart';
 import 'package:app_storethuc/base/base_event.dart';
@@ -56,7 +57,10 @@ class ShoppingCartContainer extends StatefulWidget {
 class _ShoppingCartContainerState extends State<ShoppingCartContainer> {
   handleEvent(BaseEvent event) {
     if (event is ShouldPopEvent) {
-      Navigator.pop(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
     }
   }
 
@@ -156,7 +160,7 @@ class ConfirmInfoWidget extends StatelessWidget {
             NormalButton(
               title: 'Confirm',
               onPressed: () {
-                bloc?.event.add(ConfirmOrderEvent());
+                bloc!.event.add(ConfirmOrderEvent());
               },
               enable: true,
             ),
