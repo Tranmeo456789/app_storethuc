@@ -2,7 +2,6 @@ import 'package:app_storethuc/module/checkout/checkout_page.dart';
 import 'package:app_storethuc/module/home/home_page.dart';
 import 'package:app_storethuc/module/splash/splash.dart';
 import 'package:flutter/material.dart';
-
 import 'package:app_storethuc/module/signin/signin_page.dart';
 import 'package:app_storethuc/module/signup/signup_page.dart';
 

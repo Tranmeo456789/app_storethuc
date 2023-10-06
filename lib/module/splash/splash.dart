@@ -24,12 +24,10 @@ class _SplashPageState extends State<SplashPage> {
       () async {
         var token = await SPref.instance.get(SPrefCache.KEY_TOKEN);
         if (token != null) {
-          // ignore: use_build_context_synchronously
           Navigator.pushReplacementNamed(context, '/home');
           return;
         }
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacementNamed(context, '/sign-in');
+        Navigator.pushReplacementNamed(context, '/login');
       },
     );
   }

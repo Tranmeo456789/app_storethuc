@@ -86,8 +86,8 @@ class NavigatorProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
     return Container(
-      child: Stack(
-        children: const <Widget>[],
+      child: const Stack(
+        children: <Widget>[],
       ),
     );
   }

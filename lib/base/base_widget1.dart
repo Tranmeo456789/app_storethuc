@@ -42,8 +42,8 @@ class NavigatorProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(0),
-      child: Stack(
-        children: const <Widget>[],
+      child: const Stack(
+        children: <Widget>[],
       ),
     );
   }
